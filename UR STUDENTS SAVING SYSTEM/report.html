@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Report Generation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f55353;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #98f89a;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .report {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        .report p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Generate Project Report</h2>
+        <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate" required>
+        </div>
+        <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate" required>
+        </div>
+        <div class="form-group">
+            <label for="reportDescription">Report Description:</label>
+            <textarea id="reportDescription" name="reportDescription" rows="4"></textarea>
+        </div>
+        <button onclick="generateReport()">Generate Report</button>
+
+        <div class="report" id="reportSection" style="display: none;">
+            <h3>Project Report</h3>
+            <p><strong>Start Date:</strong> <span id="reportStartDate"></span></p>
+            <p><strong>End Date:</strong> <span id="reportEndDate"></span></p>
+            <p><strong>Description:</strong> <span id="reportDescription"></span></p>
+            <!-- Additional report details can be added here -->
+        </div>
+    </div>
+
+    <script>
+        function generateReport() {
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            const description = document.getElementById('reportDescription').value;
+
+            // Display report section
+            document.getElementById('reportSection').style.display = 'block';
+
+            // Display selected dates and description in the report
+            document.getElementById('reportStartDate').textContent = startDate;
+            document.getElementById('reportEndDate').textContent = endDate;
+            document.getElementById('reportDescription').textContent = description;
+
+            // Fetch project report data from the server and display it
+            // You can make AJAX requests here to fetch the project report data and update the report section dynamically
+        }
+    </script>
+</body>
+</html>

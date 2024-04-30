@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8bc62;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Management System</h2>
+        <div id="reportButton">
+            <button id="reportBtn">Generate Report</button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to generate report
+            function generateReport() {
+                // Dummy data for demonstration
+                const students = [
+                    { id: 1, name: 'John Doe', grade: 'A' },
+                    { id: 2, name: 'Jane Smith', grade: 'B' },
+                    { id: 3, name: 'Alice Johnson', grade: 'A' },
+                    { id: 4, name: 'Bob Brown', grade: 'C' }
+                ];
+
+                // Generate report content
+                let reportContent = '<h2>Student Report</h2>';
+                reportContent += '<table>';
+                reportContent += '<tr><th>ID</th><th>Name</th><th>Grade</th></tr>';
+                students.forEach(student => {
+                    reportContent += `<tr><td>${student.id}</td><td>${student.name}</td><td>${student.grade}</td></tr>`;
+                });
+                reportContent += '</table>';
+
+                // Create a new window for the report
+                const reportWindow = window.open('', 'Student Report', 'width=600,height=400');
+                reportWindow.document.body.innerHTML = reportContent;
+            }
+
+            // Event listener for report button
+            const reportBtn = document.getElementById('reportBtn');
+            reportBtn.addEventListener('click', function() {
+                generateReport();
+            });
+        });
+    </script>
+</body>
+</html>

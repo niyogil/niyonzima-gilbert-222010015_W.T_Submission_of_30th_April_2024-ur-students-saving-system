@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #393636;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #f4b7b7;
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #f8bbbb;
+            border: 1px solid #484040;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, Student!</h2>
+        
+        <div class="card">
+            <h3>Account Information</h3>
+            <p>View your account details, balance, and transaction history.</p>
+            <div class="button-container">
+                <a href="stud to account.html" class="button">View Account</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Make a Deposit</h3>
+            <p>Deposit money into your savings account to increase your balance.</p>
+            <div class="button-container">
+            <a href="deposit.html" class="button">Make a Deposit</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Make a Withdrawal</h3>
+            <p>Withdraw money from your savings account when needed.</p>
+            <div class="button-container">
+                <a href="withdrawal.html" class="button">Make a Withdrawal</a>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <a href="student report.html" class="button">View Reports</a>
+            <a href="home.html" class="button">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

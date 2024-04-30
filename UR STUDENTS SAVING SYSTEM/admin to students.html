@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+<body>
+    <?php
+    // Step 1: Establish a connection to the database
+    $servername = "localhost"; // Change this to your database server
+    $username = "root"; // Change this to your database username
+    $password = ""; // Change this to your database password
+    $dbname = "students_saving"; // Change this to your database name
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Step 2: Handle form submissions
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Insert data into the database
+        
+        $studentID = $_POST['studentID'];
+        $fullName = $_POST['fullName'];
+        $gender = $_POST['gender'];
+        $faculty = $_POST['faculty'];
+        $deposit = $_POST['deposit'];
+        $withdraw = $_POST['withdraw'];
+        $balance = $_POST['balance'];
+        $regNumber = $_POST['regNumber'];
+        $date = $_POST['date'];
+        
+        $sql = "INSERT INTO students (studentID, fullName, gender, faculty, deposit, withdraw, balance, regNumber, date)
+                VALUES ('$studentID', '$fullName', '$gender', '$faculty', '$deposit', '$withdraw', '$balance', '$regNumber', '$date')";
+        
+        if ($conn->query($sql) === TRUE) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
+
+    $conn->close();
+    ?>
+    
+    <div class="container">
+        <h2>Student Management System</h2>
+        <form id="studentForm" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <div class="form-group">
+                <label for="studentID">Student ID:</label>
+                <input type="text" id="studentID" name="studentID">
+            </div>
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName">
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <input type="text" id="gender" name="gender">
+            </div>
+            <div class="form-group">
+                <label for="faculty">Faculty:</label>
+                <input type="text" id="faculty" name="faculty">
+            </div>
+            <div class="form-group">
+                <label for="deposit">Money Deposited:</label>
+                <input type="number" id="deposit" name="deposit">
+            </div>
+            <div class="form-group">
+                <label for="withdraw">Money Withdrawn:</label>
+                <input type="number" id="withdraw" name="withdraw">
+            </div>
+            <div class="form-group">
+                <label for="balance">Balance:</label>
+                <input type="number" id="balance" name="balance">
+            </div>
+            <div class="form-group">
+                <label for="regNumber">Registration Number:</label>
+                <input type="text" id="regNumber" name="regNumber">
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

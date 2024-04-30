@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdrawal Platform</title>
+    <style>
+        /* Your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #85e6fe;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f28181;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Withdrawal Platform</h2>
+        <form id="withdrawalForm">
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" min="0" step="0.01" required>
+                <div id="amountError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="withdrawalMethod">Withdrawal Method:</label>
+                <select id="withdrawalMethod" name="withdrawalMethod" required>
+                    <option value="">Select Withdrawal Method</option>
+                    <option value="mtn">MTN Number</option>
+                    <option value="bank">Bank</option>
+                </select>
+            </div>
+            <div id="mtnDetails" class="form-group" style="display: none;">
+                <label for="mtnNumber">MTN Number:</label>
+                <input type="text" id="mtnNumber" name="mtnNumber">
+            </div>
+            <div id="bankDetails" class="form-group" style="display: none;">
+                <label for="bankName">Bank Name:</label>
+                <input type="text" id="bankName" name="bankName">
+                <label for="accountNumber">Account Number:</label>
+                <input type="text" id="accountNumber" name="accountNumber">
+            </div>
+            <button type="submit">Withdraw</button>
+        </form>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('withdrawalForm');
+            const withdrawalMethodSelect = document.getElementById('withdrawalMethod');
+            const mtnDetails = document.getElementById('mtnDetails');
+            const bankDetails = document.getElementById('bankDetails');
+
+            withdrawalMethodSelect.addEventListener('change', function() {
+                if (withdrawalMethodSelect.value === 'mtn') {
+                    mtnDetails.style.display = 'block';
+                    bankDetails.style.display = 'none';
+                } else if (withdrawalMethodSelect.value === 'bank') {
+                    mtnDetails.style.display = 'none';
+                    bankDetails.style.display = 'block';
+                } else {
+                    mtnDetails.style.display = 'none';
+                    bankDetails.style.display = 'none';
+                }
+            });
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Fetch form data
+                const amount = parseFloat(document.getElementById('amount').value);
+                const withdrawalMethod = document.getElementById('withdrawalMethod').value;
+                let withdrawalDetails;
+
+                if (withdrawalMethod === 'mtn') {
+                    withdrawalDetails = document.getElementById('mtnNumber').value;
+                } else if (withdrawalMethod === 'bank') {
+                    const bankName = document.getElementById('bankName').value;
+                    const accountNumber = document.getElementById('accountNumber').value;
+                    withdrawalDetails = `Bank: ${bankName}, Account Number: ${accountNumber}`;
+                }
+
+                // Validate amount
+                const amountError = document.getElementById('amountError');
+                if (isNaN(amount) || amount <= 0) {
+                    amountError.textContent = 'Please enter a valid amount.';
+                    return;
+                } else {
+                    amountError.textContent = '';
+                }
+
+                // Perform withdrawal operation (you can add your logic here)
+                alert(`Withdrawal successful! Amount: $${amount.toFixed(2)}, Withdrawal Method: ${withdrawalMethod}, Withdrawal Details: ${withdrawalDetails}`);
+
+                // Reset the form after successful submission
+                form.reset();
+                withdrawalMethodSelect.value = ''; // Reset withdrawal method select
+                mtnDetails.style.display = 'none'; // Hide MTN details
+                bankDetails.style.display = 'none'; // Hide bank details
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(128, 128, 93);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, Admin!</h2>
+        
+        <div class="card">
+            <h3>Manage Students</h3>
+            <p>You can manage student accounts, view their details, and update information.</p>
+            <div class="button-container">
+                <a href="admin to students.html" class="button">View Students</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Financial Reports</h3>
+            <p>Generate financial reports, track savings trends, and monitor program performance.</p>
+            <div class="button-container">
+                <a href="admin generate.html" class="button">Generate Report</a>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <a href="admin to acc.html" class="button">Manage Accounts</a>
+           
+            <a href="home.html" class="button">Logout</a>
+        </div>
+    </div>
+    
+    <script>
+        // Add JavaScript functionality here, if needed
+    </script>
+</body>
+</html>
